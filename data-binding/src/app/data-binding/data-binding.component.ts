@@ -11,12 +11,28 @@ export class DataBindingComponent {
   cursoAngular: boolean = true;
   urlImagem: string = 'http://lorempixel.com.br/500/400/?1';
 
+  valorAtual: string = '';
+  valorSalvo: any = '';
+
   getValor() {
     return 1;
   }
 
   getCurtirCurso() {
     return true;
+  }
+
+  botaoClicado() {
+    alert('Botão clicado');
+  }
+
+  onKeyUp(evento: KeyboardEvent) {
+    //console.log();
+    this.valorAtual = (<HTMLInputElement>evento.target).value;
+  }
+
+  salvarValor(valor: EventTarget) {
+    this.valorSalvo = valor;
   }
 
 }
