@@ -17,5 +17,43 @@
     <img bind-src="urlImagem"> <!-- Este é o property binding -->
   </article>
 
+  <article>
+    <h3>Class e Style Binding</h3>
+    <div>
+      Selecione uma classe
+      <select #classe (change)="0">
+        <option value="classe1">Classe 1</option>
+        <option value="classe2">Classe 2</option>
+        <option value="classe3">Classe 3</option>
+      </select>
+
+      <br><br>
+
+      <div [class.c1]="classe.value == 'classe1'" >Classe 1</div>
+      <div [class.c2]="classe.value == 'classe2'" >Classe 2</div>
+      <div [class.c3]="classe.value == 'classe3'" >Classe 3</div>
+
+      <!--
+        Se estivesse usando a biblioteca do curso, daria também para fazer
+        a interpolação no estilo:
+
+        <div class="alert {{ class.value }}" role="alert">
+          Texto colorido conforme valor do combobox.
+        </div>
+      -->
+
+      <!--
+        É possível ocultar um elemento ou deixar ele visivel, atraves do style binding
+
+        <div class="alert alert-danger" role="alert"
+          [style.display]="class.value == 'alert-danger' ? 'block' : 'none'">
+            Esse texto somente aparece em caso de erro
+        </div>
+
+      -->
+
+    </div>
+  </article>
+
 
 </section>
