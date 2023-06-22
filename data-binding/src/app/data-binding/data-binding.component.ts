@@ -14,6 +14,13 @@ export class DataBindingComponent {
   valorAtual: string = '';
   valorSalvo: any = '';
 
+  nome: string = 'abc';
+
+  pessoa: any = {
+    nome: 'def',
+    idade: 20
+  }
+
   getValor() {
     return 1;
   }
