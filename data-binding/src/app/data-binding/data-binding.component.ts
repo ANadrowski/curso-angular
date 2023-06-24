@@ -16,6 +16,8 @@ export class DataBindingComponent {
 
   nome: string = 'abc';
 
+  nomeDoCurso: string = 'Angular';
+
   pessoa: any = {
     nome: 'def',
     idade: 20
