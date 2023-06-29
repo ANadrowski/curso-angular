@@ -44,4 +44,8 @@ export class DataBindingComponent {
     this.valorSalvo = valor;
   }
 
+  onMudouValor(evento: any) {
+    console.log(evento.novoValor);
+  }
+
 }

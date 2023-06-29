@@ -111,7 +111,7 @@
 
     <app-curso [nome]="nomeDoCurso"></app-curso>
 
-    <contador></contador>
+    <contador [valor]="10" (mudouValor)="onMudouValor($event)" ></contador>
 
   </article>
 
