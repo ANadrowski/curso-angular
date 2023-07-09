@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class ExemplosPipesComponent {
 
   livro: any = {
-    titulo: 'Lerning Java',
+    titulo: 'Lerning java with loiane',
     rating: '4.54321',
     numeroPaginas: 314,
     preco: 44.99,
