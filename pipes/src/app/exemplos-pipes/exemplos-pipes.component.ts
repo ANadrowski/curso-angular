@@ -25,5 +25,17 @@ export class ExemplosPipesComponent {
     this.livros.push(novoCurso);
   }
 
+  /* Falta pesquisar melhor aqui
 
+  obterCursos() {
+    if (this.livros.length === 0  || this.filtro === undefined || this.filtro.trim() === '') {
+      return this.livros;
+    }
+
+    const filter = args.toLocaleString().toLocaleLowerCase();
+      return value.filter(
+        (v: string) => v.toLocaleLowerCase().includes(filter)
+    );
+  }
+  */
 }
