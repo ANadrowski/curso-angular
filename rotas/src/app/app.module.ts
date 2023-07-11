@@ -6,27 +6,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CursosComponent } from './cursos/cursos.component';
+//import { CursosComponent } from './cursos/cursos.component';
 
 import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
-import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-encontrado.component';
+import { CursosModule } from './cursos/cursos.module';
+//import { CursoDetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
+//import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso-nao-encontrado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
-    CursosComponent,
-    CursoDetalheComponent,
-    CursoNaoEncontradoComponent
+    LoginComponent
+    //CursosComponent,
+    //CursoDetalheComponent,
+    //CursoNaoEncontradoComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CursosModule,
     AppRoutingModule,
     MatIconModule,
     MatToolbarModule,
