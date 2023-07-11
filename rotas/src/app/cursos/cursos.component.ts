@@ -8,15 +8,11 @@ import { CursosService } from './cursos.service';
 })
 export class CursosComponent {
 
+  cursos: any[];
+
   constructor(private cursosService: CursosService) {
-
+    this.cursos = this.cursosService.getCursos();
   }
 
-  getCursos() {
-    return [
-      {id: 1, nome: 'Angular'},
-      {id: 2, nome: 'Java'}
-    ];
-  }
 
 }
