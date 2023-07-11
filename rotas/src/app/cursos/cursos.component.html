@@ -4,10 +4,16 @@
 </ul>
 -->
 
+
 <p>Lista de cursos</p>
+<p>Página: {{ pagina }}</p>
 <div>
   <a *ngFor="let curso of cursos" [routerLink]="['/curso', curso.id]" >{{ curso.nome }}</a>
   <br>
 </div>
+
+<button (click)="proximaPagina()">Próxima página</button>
+
+
 
 
