@@ -1,1 +1,15 @@
-<p>aluno-form works!</p>
+<p>Detalhes do aluno</p>
+
+<div>
+  <label for="disabled">#</label>
+  <input disabled [(ngModel)]="aluno.id" id="disabled" type="text">
+
+  <br>
+  <label for="nome">Nome</label>
+  <input id="nome" [(ngModel)]="aluno.nome">
+
+  <br>
+  <label for="email">Email</label>
+  <input id="email" [(ngModel)]="aluno.email">
+
+</div>
