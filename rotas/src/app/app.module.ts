@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
 //import { CursosModule } from './cursos/cursos.module';
 //import { AlunosModule } from './alunos/alunos.module';
 //import { CursoDetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
@@ -31,6 +32,7 @@ import { MatListModule } from '@angular/material/list';
     BrowserAnimationsModule,
     //CursosModule,
     //AlunosModule,
+    FormsModule,
     AppRoutingModule,
     MatIconModule,
     MatToolbarModule,
