@@ -3,14 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlunosComponent } from './alunos.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
+import { alunosGuard } from '../guards/alunos.guard';
 
 const routes: Routes = [
   //{ path: 'alunos', component: AlunosComponent, children: [
-    { path: '', component: AlunosComponent, children: [
-    { path: 'novo', component: AlunoFormComponent},
-    { path: ':id', component: AlunoDetalheComponent},
-    { path: ':id/editar', component: AlunoFormComponent }
-  ]},
+    { path: '', component: AlunosComponent,
+      canActivateChild: [alunosGuard],
+      children: [
+      { path: 'novo', component: AlunoFormComponent},
+      { path: ':id', component: AlunoDetalheComponent},
+      { path: ':id/editar', component: AlunoFormComponent }
+    ]},
 ];
 
 @NgModule({
