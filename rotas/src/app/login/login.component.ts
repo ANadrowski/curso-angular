@@ -17,6 +17,7 @@ export class LoginComponent {
 
   fazerLogin() {
     console.log(this.usuario);
+    this.authService.fazerLogin(this.usuario);
   }
 
 }
