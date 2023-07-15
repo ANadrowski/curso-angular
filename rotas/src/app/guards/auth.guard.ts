@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
+import { AuthService } from '../login/auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
+export const authGuard: CanActivateFn = (route, state) => {
 
-  constructor() { }
-}
+  const auth = inject(AuthService);
+  return auth.verificaUsuarioAutenticado;
+
+
+};

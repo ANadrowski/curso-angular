@@ -25,4 +25,8 @@ export class AuthService {
     }
     return this.usuarioAutenticado;
   }
+
+  get verificaUsuarioAutenticado(): boolean {
+    return this.usuarioAutenticado;
+  }
 }
