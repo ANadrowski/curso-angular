@@ -14,7 +14,7 @@ const routes: Routes = [
   //{ path: 'curso/:id', component: CursoDetalheComponent },
   { path: 'login', component: LoginComponent },
   //{ path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
-  { path: '', component: HomeComponent }
+  { path: '', canActivate: [authGuard], component: HomeComponent }
 ];
 
 @NgModule({
