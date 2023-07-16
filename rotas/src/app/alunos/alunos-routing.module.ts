@@ -13,7 +13,7 @@ const routes: Routes = [
       canActivateChild: [alunosGuard],
       children: [
       { path: 'novo', component: AlunoFormComponent},
-      { path: ':id', component: AlunoDetalheComponent, resolve: { aluno : alunoDetalheResolver }},
+      { path: ':id', component: AlunoDetalheComponent, resolve: { alunoX : alunoDetalheResolver }},
       { path: ':id/editar', component: AlunoFormComponent, canDeactivate: [alunosDeactiveGuard] }
     ]},
 ];
