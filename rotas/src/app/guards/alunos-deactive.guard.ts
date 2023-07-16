@@ -1,9 +1,11 @@
 import { CanDeactivateFn } from '@angular/router';
-import { AlunoFormComponent } from '../alunos/aluno-form/aluno-form.component';
+import { IformCandeactivate } from './iform-candeactivate';
 
-export const alunosDeactiveGuard: CanDeactivateFn<AlunoFormComponent> = (component, currentRoute, currentState, nextState) => {
+export const alunosDeactiveGuard: CanDeactivateFn<IformCandeactivate> = (component, currentRoute, currentState, nextState) => {
 
-  console.log(`guarda de desativação: ${component.formMudou} `);
+  //console.log(`guarda de desativação: ${component.formMudou} `);
 
-  return component.podeMudarRota();
+  //return component.podeMudarRota();
+
+  return component.podeDesativar();
 };
