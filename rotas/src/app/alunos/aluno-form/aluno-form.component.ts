@@ -12,6 +12,7 @@ export class AlunoFormComponent {
 
   aluno: any = {};
   inscricao: Subscription;
+  formMudou: boolean = false;
 
   constructor(private route: ActivatedRoute, private alunosService: AlunosService) {
     this.inscricao = this.route.params.subscribe(
@@ -29,6 +30,22 @@ export class AlunoFormComponent {
 
   ngOnDetroy() {
     this.inscricao.unsubscribe();
+  }
+
+  onInput() {
+    this.formMudou = true;
+    console.log('mudou!');
+  }
+
+  podeMudarRota() {
+    if (this.formMudou) {
+      if (confirm('tem certeza que deseja mudar de página?') == true) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
   }
 
 }

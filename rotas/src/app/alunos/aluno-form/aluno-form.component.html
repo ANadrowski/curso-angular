@@ -6,7 +6,7 @@
 
   <br>
   <label for="nome">Nome</label>
-  <input id="nome" [(ngModel)]="aluno.nome">
+  <input id="nome" [(ngModel)]="aluno.nome" (input)="onInput()">
 
   <br>
   <label for="email">Email</label>
