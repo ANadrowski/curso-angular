@@ -18,7 +18,8 @@ const routes: Routes = [
   //{ path: 'curso/:id', component: CursoDetalheComponent },
   { path: 'login', component: LoginComponent },
   //{ path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
-  { path: '', canActivate: [authGuard], component: HomeComponent },
+  { path: 'home', canActivate: [authGuard], component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PaginaNaoEncontradaComponent }
 ];
 
