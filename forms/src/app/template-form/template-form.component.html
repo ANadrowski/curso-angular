@@ -19,6 +19,7 @@
     name="email" [(ngModel)]="usuario.email" required email>
 
     <br><br>
-    <button type="submit">Submit</button>
+    <!-- Adicionado um property binding para desabilitar o botão-->
+    <button type="submit" [disabled]="!f.valid">Submit</button>
   </div>
 </form>
