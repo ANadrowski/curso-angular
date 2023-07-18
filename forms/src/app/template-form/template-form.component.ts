@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-form',
@@ -12,7 +13,7 @@ export class TemplateFormComponent implements OnInit {
     email: null
   }
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
   }
@@ -21,6 +22,20 @@ export class TemplateFormComponent implements OnInit {
     console.log(form.value);
 
     console.log(this.usuario);
+  }
+
+  consultaCEP(cep: any) {
+    console.log(cep);
+
+    cep = cep.replace(/\D/g, '');
+
+    if (cep != '') {
+      var validaCep = /^[0-9]{8}$/;
+
+      if (validaCep.test(cep)) {
+        this.httpClient.get(`//viacep.com.br/ws/${cep}/json`).subscribe(dados => console.log(dados));;
+      }
+    }
   }
 
 }
