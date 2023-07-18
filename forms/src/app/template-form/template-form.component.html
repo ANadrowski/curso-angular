@@ -2,9 +2,15 @@
   <div>
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome"
-    [(ngModel)]="usuario.nome" required #nome>
-    <div>
-      Classes aplicadas ao campo acima: {{ nome.className }}
+    [(ngModel)]="usuario.nome" required #nome="ngModel">
+    <!--
+      <div>
+        Classes aplicadas ao campo acima: {{ nome.className }}
+      </div>
+    -->
+
+    <div *ngIf="!nome.valid && nome.touched">
+      Nome é obrigatório.
     </div>
 
     <br><br>
