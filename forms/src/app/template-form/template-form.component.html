@@ -22,7 +22,7 @@
 
       <br><br>
       <label for="cep">CEP:</label>
-      <input type="text" id="cep" name="cep" required ngModel #cep="ngModel" (blur)="consultaCEP(cep.value)">
+      <input type="text" id="cep" name="cep" required ngModel #cep="ngModel" (blur)="consultaCEP(cep.value, f)">
       <div *ngIf="!cep.valid && cep.touched">
         CEP é obrigatório.
       </div>
