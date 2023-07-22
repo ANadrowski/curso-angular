@@ -19,6 +19,11 @@ export class DataFormComponent implements OnInit {
     this.formulario = new FormGroup({
       nome: new FormControl(null),
       email: new FormControl(null)
+
+      endereco: new FormGroup({
+        cep: new FormGroup(null)
+      })
+
     });
     */
 
@@ -34,13 +39,16 @@ export class DataFormComponent implements OnInit {
           Validators.required,
           Validators.email
         ]],
-      cep: [null, Validators.required],
-      numero: [null, Validators.required],
-      complemento: [null],
-      rua: [null, Validators.required],
-      bairro: [null, Validators.required],
-      cidade: [null, Validators.required],
-      estado: [null, Validators.required]
+
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required]
+      })
     })
 
   }
