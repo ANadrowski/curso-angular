@@ -20,6 +20,13 @@ export class DataFormComponent implements OnInit {
   tecnologias !: any[];
   newsletterOp!: any[];
 
+  frameworks = [
+    'Angular',
+    'React',
+    'Vue',
+    'Sencha'
+  ];
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,7 +72,8 @@ export class DataFormComponent implements OnInit {
       cargo: [null],
       tecnologias: [null],
       newsletter: ['s'],
-      termos: [null, Validators.requiredTrue]
+      termos: [null, Validators.requiredTrue],
+      frameworks: [null]
     })
 
 

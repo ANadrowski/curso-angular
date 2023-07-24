@@ -28,20 +28,26 @@
     <div>
       <label for="newsletter">Newsletter:</label>
       <div id="newsletter">
-
-
         <div *ngFor="let item of newsletterOp">
           <label>
             <input type="radio" [value]="item.valor" formControlName="newsletter"/> {{ item.desc }}
           </label>
         </div>
-
       </div>
     </div>
 
     <br><br>
     <div>
       <input type="checkbox" formControlName="termos">Aceito os termos.
+    </div>
+
+    <br><br>
+    <div>
+      <label for="frameworks">Frameworks:</label>
+      <div id="frameworks">
+        <input type="checkbox" formControlName="termos">Angular
+      </div>
+
     </div>
 
     <br><br>
