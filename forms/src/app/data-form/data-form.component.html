@@ -19,9 +19,24 @@
     <br><br>
     <div>
       <label for="tecnologias">Tecnologia:</label>
-      <select multiple id="tecnologias" formControlName="tecnologias" readonly>
+      <select multiple id="tecnologias" formControlName="tecnologias">
         <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{ tecnologia.desc }}</option>
       </select>
+    </div>
+
+    <br><br>
+    <div>
+      <label for="newsletter">Newsletter:</label>
+      <div id="newsletter">
+
+
+        <div *ngFor="let item of newsletterOp">
+          <label>
+            <input type="radio" [value]="item.valor" formControlName="newsletter"/> {{ item.desc }}
+          </label>
+        </div>
+
+      </div>
     </div>
 
     <br><br>
