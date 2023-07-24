@@ -17,10 +17,18 @@
     </div>
 
     <br><br>
+    <div>
+      <label for="tecnologias">Tecnologia:</label>
+      <select multiple id="tecnologias" formControlName="tecnologias" readonly>
+        <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{ tecnologia.desc }}</option>
+      </select>
+    </div>
+
+    <br><br>
     <button type="submit">Submit</button>
     <button (click)="resetar()">Cancelar</button>
     <button (click)="setarCargo()">Cargo</button>
-
+    <button (click)="setarTecnologias()">Tecnologias</button>
 
   </div>
 
