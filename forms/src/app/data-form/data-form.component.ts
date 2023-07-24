@@ -59,15 +59,36 @@ export class DataFormComponent implements OnInit {
   onSubmit() {
     console.log(this.formulario.value);
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    .pipe(map((dados: any) => dados))
-    .subscribe(dados => {
-      console.log(dados);
-      //reset do form
-      //this.formulario.reset();
-      this.resetar();
-    },
-    (erro: any) => alert('erro')
+    if (this.formulario.valid) {
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      .pipe(map((dados: any) => dados))
+      .subscribe(dados => {
+        console.log(dados);
+        //reset do form
+        //this.formulario.reset();
+        this.resetar();
+      },
+      (erro: any) => alert('erro')
+      );
+    } else {
+      console.log('formulario invalido');
+      this.verificaValidacoesForm(this.formulario);
+    }
+
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(
+      campo => {
+        console.log(campo);
+        const controle = formGroup.get(campo);
+        controle?.markAsTouched; //Não vai mostrar a mensagem de erro pq não foi implementada com CSS.
+
+        if (controle instanceof FormGroup) {
+          this.verificaValidacoesForm(controle);
+        }
+
+      }
     );
   }
 
