@@ -124,6 +124,16 @@ export class DataFormComponent implements OnInit {
   onSubmit() {
     console.log(this.formulario.value);
 
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((v: any, i: any) => v ? this.frameworks[i] : null)
+        .filter((v: any, i: any) => v !== null)
+    });
+
+    console.log(valueSubmit);
+
     if (this.formulario.valid) {
       this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
       .pipe(map((dados: any) => dados))
