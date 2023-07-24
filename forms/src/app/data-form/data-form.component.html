@@ -44,8 +44,8 @@
     <br><br>
     <div>
       <label for="frameworks">Frameworks:</label>
-      <div id="frameworks">
-        <input type="checkbox" formControlName="termos">Angular
+      <div id="frameworks" formArrayName="frameworks" *ngFor="let item of FormArrayControls(); let i = index">
+        <input type="checkbox" [formControlName]="i"> {{ frameworks[i] }}
       </div>
 
     </div>

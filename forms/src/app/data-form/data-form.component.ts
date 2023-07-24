@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
@@ -73,7 +73,7 @@ export class DataFormComponent implements OnInit {
       tecnologias: [null],
       newsletter: ['s'],
       termos: [null, Validators.requiredTrue],
-      frameworks: [null]
+      frameworks: this.buildFrameworks()
     })
 
 
@@ -97,6 +97,28 @@ export class DataFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  buildFrameworks() {
+
+    const values = this.frameworks.map(
+      v => new FormControl(false)
+    )
+
+    return this.formBuilder.array(values);
+
+    /*
+    return [
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false)
+    ]
+    */
+  }
+
+  FormArrayControls(){
+    return (this.formulario.get('frameworks') as FormArray).controls
   }
 
   onSubmit() {
