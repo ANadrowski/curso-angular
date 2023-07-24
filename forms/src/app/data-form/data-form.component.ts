@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { map } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -16,7 +17,11 @@ export class DataFormComponent implements OnInit {
   estados!: EstadoBr[];
 
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private dropDownService: DropdownService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private dropDownService: DropdownService,
+    private cepService: ConsultaCepService) {
 
     /*
     this.formulario = new FormGroup({
@@ -112,19 +117,10 @@ export class DataFormComponent implements OnInit {
 
     console.log(cep);
 
-    cep = cep.replace(/\D/g, '');
-
-    if (cep != '') {
-      var validaCep = /^[0-9]{8}$/;
-
-      if (validaCep.test(cep)) {
-
-        this.resetaDadosForm();
-
-        //this.httpClient.get(`//viacep.com.br/ws/${cep}/json`).subscribe(dados => console.log(dados));
-        this.http.get(`//viacep.com.br/ws/${cep}/json`).subscribe(dados => this.populaDadosForm(dados));
-      }
+    if (cep != null && cep !== '') {
+      this.cepService.consultaCEP(cep)?.subscribe(dados => this.populaDadosForm(dados));
     }
+
   }
 
   populaDadosForm(dados: any) {
