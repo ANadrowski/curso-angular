@@ -67,7 +67,9 @@
 
     <br><br>
     <label for="estado">Estado:</label>
-    <input type="text" id="estado" formControlName="estado" readonly>
+    <select id="estado" formControlName="estado" readonly>
+      <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{ estado.nome }}</option>
+    </select>
     <!--
     <div *ngIf="!estado.valid && estado.touched">
       Estado é obrigatório.
