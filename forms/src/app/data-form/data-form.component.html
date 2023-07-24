@@ -9,8 +9,19 @@
     formControlName="email" >
 
     <br><br>
+    <div>
+      <label for="cargo">Cargo:</label>
+      <select id="cargo" formControlName="cargo" readonly [compareWith]="compararCargos">
+        <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.desc }}</option>
+      </select>
+    </div>
+
+    <br><br>
     <button type="submit">Submit</button>
     <button (click)="resetar()">Cancelar</button>
+    <button (click)="setarCargo()">Cargo</button>
+
+
   </div>
 
   <div formGroupName="endereco">
