@@ -12,10 +12,16 @@ export class CursosListaComponent {
 
   cursos: Curso[] = [{ 'id': 1, 'nome': 'teste'  }];
 
+  cursos$: Observable<Curso[]>;
+
   constructor(private cursosService : CursosService) {
+    /*
     cursosService.list().subscribe(
       dados => this.cursos = dados
     );
+    */
+
+    this.cursos$ = this.cursosService.list();
   }
 
 }

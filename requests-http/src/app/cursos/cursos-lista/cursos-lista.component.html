@@ -1,5 +1,5 @@
 <p>Lista de cursos</p>
 
 <ul>
-  <li *ngFor="let curso of cursos">{{ curso.nome }}</li>
+  <li *ngFor="let curso of cursos$ | async">{{ curso.nome }}</li>
 </ul>
