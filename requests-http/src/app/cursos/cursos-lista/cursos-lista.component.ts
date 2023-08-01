@@ -10,12 +10,9 @@ import { Curso } from '../curso';
 })
 export class CursosListaComponent {
 
-  cursos: Curso[];
-  //cursos$: Observable<Curso[]>;
+  cursos: Curso[] = [{ 'id': 1, 'nome': 'teste'  }];
 
   constructor(private cursosService : CursosService) {
-    cursos = [ ''];
-
     cursosService.list().subscribe(
       dados => this.cursos = dados
     );
