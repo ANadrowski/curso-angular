@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CursosService } from '../cursos.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, empty } from 'rxjs';
 import { Curso } from '../curso';
 
 @Component({
@@ -21,7 +21,12 @@ export class CursosListaComponent {
     );
     */
 
-    this.cursos$ = this.cursosService.list();
+    this.cursos$ = this.cursosService.list().pipe(
+      catchError(error => {
+        console.error(`Descrição do erro: ${ error }`);
+        return empty();
+      })
+    );
   }
 
 }
