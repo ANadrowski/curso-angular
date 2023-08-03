@@ -1,0 +1,9 @@
+<p>cursos-form works!</p>
+
+<form [formGroup]="form">
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" formControlName="nome">
+  <br><br>
+  <button type="submit" (click)="onSubmit()">Salvar</button>
+  <button type="button" (click)="onCancel()" >Cancelar</button>
+</form>
