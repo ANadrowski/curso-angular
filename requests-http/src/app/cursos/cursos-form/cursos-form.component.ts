@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../cursos.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-cursos-form',
@@ -11,7 +12,7 @@ export class CursosFormComponent {
 
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private cursoService: CursosService) {
+  constructor(private fb: FormBuilder, private cursoService: CursosService, private location: Location) {
     this.form = fb.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
     });
@@ -21,7 +22,10 @@ export class CursosFormComponent {
     if (this.form.valid) {
       console.log(`onSumit!`);
       this.cursoService.create(this.form.value).subscribe(
-        sucess => console.log(sucess),
+        sucess => {
+          console.log(sucess);
+          this.location.back();
+        },
         error => console.error(error),
         () => console.log('request completo')
       );
