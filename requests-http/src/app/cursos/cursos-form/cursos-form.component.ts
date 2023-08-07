@@ -21,7 +21,9 @@ export class CursosFormComponent {
         console.log(id);
 
         const curso$ = this.cursoService.loadByID(id);
-        curso$.subscribe();
+        curso$.subscribe(curso => {
+          
+        });
       }
     );
 
