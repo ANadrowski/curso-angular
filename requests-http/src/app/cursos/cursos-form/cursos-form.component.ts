@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../cursos.service';
 import { Location } from '@angular/common'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cursos-form',
@@ -12,7 +13,18 @@ export class CursosFormComponent {
 
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private cursoService: CursosService, private location: Location) {
+  constructor(private fb: FormBuilder, private cursoService: CursosService, private location: Location, private route: ActivatedRoute) {
+
+    this.route.params.subscribe(
+      (params: any) => {
+        const id = params['id'];
+        console.log(id);
+
+        const curso$ = this.cursoService.loadByID(id);
+        curso$.subscribe();
+      }
+    );
+
     this.form = fb.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
     });
