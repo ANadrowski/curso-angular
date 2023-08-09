@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../cursos.service';
 import { Location } from '@angular/common'
 import { ActivatedRoute } from '@angular/router';
+import { Curso } from '../curso';
+import { map, switchMap } from 'rxjs/operators';
+//import { map } from 'rxjs';
 
 @Component({
   selector: 'app-cursos-form',
@@ -15,6 +18,7 @@ export class CursosFormComponent {
 
   constructor(private fb: FormBuilder, private cursoService: CursosService, private location: Location, private route: ActivatedRoute) {
 
+    /*
     this.route.params.subscribe(
       (params: any) => {
         const id = params['id'];
@@ -22,13 +26,29 @@ export class CursosFormComponent {
 
         const curso$ = this.cursoService.loadByID(id);
         curso$.subscribe(curso => {
-          
+          this.updateForm(curso);
         });
       }
     );
+    */
+
+    this.route.params
+    .pipe(
+      map( (params: any) => params['id']),
+      switchMap(id => this.cursoService.loadByID(id))
+    )
+    .subscribe(curso => this.updateForm(curso));
 
     this.form = fb.group({
+      id: [null],
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
+    });
+  }
+
+  updateForm(curso: any) {
+    this.form.patchValue({
+      id: curso.id,
+      nome: curso.nome
     });
   }
 
