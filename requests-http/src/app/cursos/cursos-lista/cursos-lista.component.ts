@@ -34,4 +34,12 @@ export class CursosListaComponent {
     this.router.navigate(['editar', id], { relativeTo: this.route});
   }
 
+  onDelete(curso: Curso) {
+    this.cursosService.remove(curso.id).subscribe(
+      sucess => {
+        this.router.navigate(['cursos'], { relativeTo: this.route});
+      }
+    );
+  }
+
 }

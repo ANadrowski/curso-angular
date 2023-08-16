@@ -1,5 +1,5 @@
 <p>Lista de cursos</p>
 
 <ul>
-  <li *ngFor="let curso of cursos$ | async">{{ curso.nome }} -  <button (click)="onEdit(curso.id)">Atualizar</button> -  <button>Remover</button></li>
+  <li *ngFor="let curso of cursos$ | async">{{ curso.nome }} -  <button (click)="onEdit(curso.id)">Atualizar</button> -  <button (click)="onDelete(curso)">Remover</button></li>
 </ul>
