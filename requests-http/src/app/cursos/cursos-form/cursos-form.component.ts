@@ -62,7 +62,20 @@ export class CursosFormComponent {
   onSubmit() {
     if (this.form.valid) {
       console.log(`onSumit!`);
-      this.cursoService.create(this.form.value).subscribe(
+
+      if (this.form.value.id) {
+        //Existe id então faz o update
+        this.cursoService.update(this.form.value).subscribe(
+          sucess => {
+            console.log(sucess);
+            this.location.back();
+          },
+          error => console.error(error),
+          () => console.log('update completo')
+        );
+
+      } else {
+        this.cursoService.create(this.form.value).subscribe(
         sucess => {
           console.log(sucess);
           this.location.back();
@@ -70,6 +83,9 @@ export class CursosFormComponent {
         error => console.error(error),
         () => console.log('request completo')
       );
+      }
+
+
     } else {
       console.log(`Formulário inválido!`);
     }
