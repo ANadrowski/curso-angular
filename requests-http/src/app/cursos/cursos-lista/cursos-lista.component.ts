@@ -22,6 +22,19 @@ export class CursosListaComponent {
     );
     */
 
+
+    this.cursos$ = this.cursosService.list().pipe(
+      catchError(error => {
+        console.error(`Descrição do erro: ${ error }`);
+        return empty();
+      })
+    );
+
+
+    //this.onRefresh();
+  }
+
+  onRefresh() {
     this.cursos$ = this.cursosService.list().pipe(
       catchError(error => {
         console.error(`Descrição do erro: ${ error }`);
@@ -36,9 +49,8 @@ export class CursosListaComponent {
 
   onDelete(curso: Curso) {
     this.cursosService.remove(curso.id).subscribe(
-      sucess => {
-        this.router.navigate(['cursos'], { relativeTo: this.route});
-      }
+      success => this.onRefresh(),
+      error => console.log(`Erro ao remover curso`)
     );
   }
 
